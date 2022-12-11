@@ -16,7 +16,34 @@ foreach (string rD in rawData)
 int[][] dataStructure = tempStructure.ToArray();
 tempStructure.Clear();
 
-Console.WriteLine(IsVisibleBottom(97, 2));
+#region Main
+
+for (int i = 0; i < dataStructure.Length; i++)
+{
+    if (i != 0 || i != dataStructure.Length - 1)
+    {
+        for (int j = 0; j < dataStructure[i].Length; j++)
+        {
+            if (j != 0 || j != dataStructure[i].Length - 1)
+            {
+                List<bool> results = new();
+                results.Add(IsVisibleTop(i, j));
+                results.Add(IsVisibleRight(i, j));
+                results.Add(IsVisibleBottom(i, j));
+                results.Add(IsVisibleLeft(i, j));
+
+                if (results.Any(value => value == true))
+                {
+                    totalVisible++;
+                }
+            }
+        }
+    }
+}
+
+Console.WriteLine(totalVisible);
+
+#endregion
 
 #region Methods
 
