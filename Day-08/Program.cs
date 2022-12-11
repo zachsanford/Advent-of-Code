@@ -37,4 +37,24 @@ bool IsVisibleLeft(int _posRow, int _posCol)
     return _isVisible;
 }
 
+// TODO
+
+bool IsVisibleRight(int _posRow, int _posCol)
+{
+
+    return false;
+}
+
+bool IsVisibleTop(int _posRow, int _posCol)
+{
+
+    return false;
+}
+
+bool IsVisibleBottom(int _posRow, int _posCol)
+{
+
+    return false;
+}
+
 #endregion
