@@ -51,10 +51,10 @@ bool IsVisibleTop(int _posRow, int _posCol)
     return false;
 }
 
-// bool IsVisibleBottom(int _posRow, int _posCol)
-// {
+bool IsVisibleBottom(int _posRow, int _posCol)
+{
 
-//     return false;
-// }
+    return false;
+}
 
 #endregion
