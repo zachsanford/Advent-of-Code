@@ -38,9 +38,22 @@ bool IsVisibleLeft(int _posRow, int _posCol)
 }
 
 // TODO
+// Test - IsVisibleRight()
+// Finish - IsVisibleTop(), IsVisibleBottom()
 
 bool IsVisibleRight(int _posRow, int _posCol)
 {
+    int _currentPos = dataStructure[_posRow][_posCol];
+    bool _isVisible = true;
+
+    for (int i = _posCol + 1; i <= dataStructure[_posRow].Length; i++)
+    {
+        if (_currentPos <= dataStructure[_posRow][i])
+        {
+            _isVisible = false;
+            break;
+        }
+    }
 
     return false;
 }
@@ -51,10 +64,10 @@ bool IsVisibleTop(int _posRow, int _posCol)
     return false;
 }
 
-// bool IsVisibleBottom(int _posRow, int _posCol)
-// {
+bool IsVisibleBottom(int _posRow, int _posCol)
+{
 
-//     return false;
-// }
+    return false;
+}
 
 #endregion
