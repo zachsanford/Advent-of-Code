@@ -1,4 +1,4 @@
-﻿string[] rawData = File.ReadAllLines(@"Data.txt");
+string[] rawData = File.ReadAllLines(@"Data.txt");
 List<int[]> tempStructure = new();
 int topVisibleDistance = 0;
 
