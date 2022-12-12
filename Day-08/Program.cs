@@ -1,6 +1,6 @@
 ﻿string[] rawData = File.ReadAllLines(@"Data.txt");
 List<int[]> tempStructure = new();
-int totalVisible = 392; // Starting with the outer perimeter
+int topVisibleDistance = 0;
 
 foreach (string rD in rawData)
 {
@@ -26,93 +26,93 @@ for (int i = 0; i < dataStructure.Length; i++)
         {
             if (j != 0 || j != dataStructure[i].Length - 1)
             {
-                List<bool> results = new();
-                results.Add(IsVisibleTop(i, j));
-                results.Add(IsVisibleRight(i, j));
-                results.Add(IsVisibleBottom(i, j));
-                results.Add(IsVisibleLeft(i, j));
+                int resultTotal = 0;
+                resultTotal += IsVisibleTop(i, j);
+                resultTotal *= IsVisibleRight(i, j);
+                resultTotal *= IsVisibleBottom(i, j);
+                resultTotal *= IsVisibleLeft(i, j);
 
-                if (results.Any(value => value == true))
+                if (resultTotal > topVisibleDistance)
                 {
-                    totalVisible++;
+                    topVisibleDistance = resultTotal;
                 }
             }
         }
     }
 }
 
-Console.WriteLine(totalVisible);
+Console.WriteLine(topVisibleDistance);
 
 #endregion
 
 #region Methods
 
-bool IsVisibleLeft(int _posRow, int _posCol)
+int IsVisibleLeft(int _posRow, int _posCol)
 {
     int _currentPos = dataStructure[_posRow][_posCol];
-    bool _isVisible = true;
+    int _visibility = 0;
 
     for (int i = _posCol - 1; i >= 0; i--)
     {
+        _visibility++;
         if (_currentPos <= dataStructure[_posRow][i])
         {
-            _isVisible = false;
             break;
         }
     }
 
-    return _isVisible;
+    return _visibility;
 }
 
-bool IsVisibleRight(int _posRow, int _posCol)
+int IsVisibleRight(int _posRow, int _posCol)
 {
     int _currentPos = dataStructure[_posRow][_posCol];
-    bool _isVisible = true;
+    int _visibility = 0;
 
     for (int i = _posCol + 1; i <= dataStructure[_posRow].Length - 1; i++)
     {
+        _visibility++;
         if (_currentPos <= dataStructure[_posRow][i])
         {
-            _isVisible = false;
             break;
         }
     }
 
-    return _isVisible;
+    return _visibility;
 }
 
-bool IsVisibleTop(int _posRow, int _posCol)
+int IsVisibleTop(int _posRow, int _posCol)
 {
     int _currentPos = dataStructure[_posRow][_posCol];
-    bool _isVisible = true;
+    int _visibility = 0;
 
     for (int i = _posRow - 1; i >= 0; i--)
     {
+        _visibility++;
         if (_currentPos <= dataStructure[i][_posCol])
         {
-            _isVisible = false;
             break;
         }
     }
 
-    return _isVisible;
+    return _visibility;
 }
 
-bool IsVisibleBottom(int _posRow, int _posCol)
+int IsVisibleBottom(int _posRow, int _posCol)
 {
     int _currentPos = dataStructure[_posRow][_posCol];
-    bool _isVisible = true;
+    int _visibility = 0;
 
     for (int i = _posRow + 1; i <= dataStructure.Length - 1; i++)
     {
+        _visibility++;
         if (_currentPos <= dataStructure[i][_posCol])
         {
-            _isVisible = false;
             break;
         }
     }
 
-    return _isVisible;
+    return _visibility;
 }
 
 #endregion
